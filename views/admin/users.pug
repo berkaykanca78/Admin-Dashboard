@@ -1,0 +1,50 @@
+extends ../layouts/main-layout.pug
+block styles
+    link(rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css")
+block content
+    .d-sm-flex.align-items-center.justify-content-between.mb-4
+        h1.h3.mb-0.text-gray-800.lang(key="adminUsers")#title Admin / 
+            a(href="/users") #{title}
+    hr
+    .container.my-4
+        .row
+            .col-md-12
+                if (action !== 'undefined' && action === 'edit')
+                    div.alert.alert-success User has been updated.
+                if (action !== 'undefined' && action === 'delete')
+                    div.alert.alert-danger User has been deleted.
+                .table-responsive
+                    table.table.table-striped.table-bordered.table-inverse.table-hover#veriler
+                        thead.text-center
+                            tr
+                                th(scope="col") 
+                                    b|  #
+                                th(scope="col")
+                                    b|  Users
+                                th(scope="col")
+                                    b|  E-Mail Address
+                                th(scope="col")
+                                    b|  Roles
+                                th(scope="col")
+                                    b|  Events
+                        tbody.text-center
+                            -var i=1;
+                            each data in result
+                                tr
+                                    th(scope="row") #{i}
+                                        input(value=`${data._id}` type="hidden" name="inputId")
+                                    td #{data.firstName+" "+data.lastName} 
+                                    td #{data.email}
+                                    td #{data.role}
+                                    td  
+                                        a.btn.btn-primary.btn-sm.text-white(type="button" data-toggle="modal" data-target="#editModal" data-id=`${data._id}` data-name=`${data.firstName}` data-surname=`${data.lastName}` data-email=`${data.email}`) Edit
+                                        |   &nbsp; 
+                                        if (data._id != localId)
+                                            a.btn.btn-danger.btn-sm.text-white(type="submit" href=`deleteUser/${data._id}`) Delete
+                                    -i++;  
+    include edit-users                
+block scripts
+    script(type="text/javascript" src="js/jquery.dataTables.min.js")
+    script(type="text/javascript" src="js/dataTables.bootstrap4.min.js")
+    script(type="text/javascript" src="js/dataTables.min.js")
+    script(src="js/editUsers.js")

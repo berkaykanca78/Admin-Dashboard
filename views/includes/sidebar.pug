@@ -1,0 +1,29 @@
+ul.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion#accordionSidebar
+        a.sidebar-brand.d-flex.align-items-center.justify-content-center(href="/")
+            .sidebar-brand-icon
+                i.fas.fa-blog
+            //.sidebar-brand-text.mx-3 LOGO
+        hr.sidebar-divider.my-0
+        li(class=(path === '/'?'nav-item active':'nav-item'))
+            a.nav-link(href="/")
+                i.fas.fa-fw.fa-tachometer-alt
+                | 
+                span.lang(key="dashboard") Dashboard 
+        if(capabilities.includes("Users") || capabilities.includes("Authorizations"))
+            hr.sidebar-divider
+            .sidebar-heading.lang(key="adminPanel") Admin Panel
+            li(class=(path === '/admin'?'nav-item active':'nav-item'))
+                a.nav-link.collapsed(href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo")
+                    i.fas.fa-fw.fa-cog
+                    | 
+                    span.lang(key="admin") Admin 
+                #collapseTwo.collapse(aria-labelledby="headingTwo" data-parent="#accordionSidebar")
+                    .bg-white.py-2.collapse-inner.rounded
+                        h6.collapse-header.lang(key="adminComponents") Admin Components
+                        if(capabilities.includes("Users"))
+                            a.collapse-item.lang(href="/users" key="users") Users
+                        if(capabilities.includes("Authorizations"))
+                            a.collapse-item.lang(href="/authorizations" key="authorizations") Authorizations
+        hr.sidebar-divider.d-none.d-md-block
+        .text-center.d-none.d-md-inline
+            button.rounded-circle.border-0#sidebarToggle

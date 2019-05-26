@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ../includes/head
+    block styles
+        script(src="js/alertify.min.js")
+        link(rel="stylesheet" href="css/alertify.min.css")
+        link(rel="stylesheet" href="css/bootstrapAlertify.min.css")
+    body.bg-gradient-primary
+        .container(style="margin-top:100px;")
+            .card.o-hidden.border-0.shadow-lg.my-5
+                .card-body.p-0
+                    .row
+                        .col-lg-5.d-none.d-lg-block.bg-register-image
+                        .col-lg-7
+                            .p-5
+                                if errorMessage
+                                    .alert.alert-danger.col-sm-12#error #{errorMessage}
+                                .text-center
+                                    h1.h4.text-gray-900.mb-4 Register Form
+                                form.user(method="POST" action="register")
+                                    .form-group.row
+                                        .col-sm-6.mb-3.mb-sm-0
+                                            input.form-control.form-control-user#exampleFirstName(type="text" placeholder="First Name" name="firstName" required)
+                                        .col-sm-6
+                                            input.form-control.form-control-user#exampleLastName(type="text" placeholder="Last Name" name="lastName" required)
+                                    .form-group
+                                        input.form-control.form-control-user#exampleInputEmail(type="email" placeholder="Email Address" name="email" required)
+                                    .form-group.row
+                                        .col-sm-6.mb-3.mb-sm-0
+                                            input.form-control.form-control-user#exampleInputPassword(type="password" placeholder="Password" name="password" required)
+                                        .col-sm-6
+                                            input.form-control.form-control-user#exampleRepeatPassword(type="password" placeholder="Repeat Password" name="repassword" required)
+                                    input.btn.btn-primary.btn-user.btn-block(type="submit" value="Register Account") 
+                                    //- hr
+                                    //- a.btn.btn-google.btn-user.btn-block(href="/login")
+                                    //-     i.fab.fa-google.fa-fw
+                                    //-     |   Register with Google
+                                    //- a.btn.btn-face.btn-user.btn-block(href="/login")
+                                    //-     i.fab.fa-facebook-f.fa-fw
+                                    //-     |   Register with Facebook
+                                hr
+                                .text-center
+                                    a.small(href="/reset-password") Forgot Password?
+                                .text-center
+                                    a.small(href="/login") Login
+        include ../includes/script
+        block scripts
+            script(type="text/javascript" src="js/alertify.js")

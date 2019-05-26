@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ../includes/head
+    body
+        #wrapper
+            include ../includes/sidebar
+            #content-wrapper.d-flex.flex-column
+                #content
+                    include ../includes/navbar
+                    .container-fluid
+                        block content
+                include ../includes/footer
+        a.scroll-to-top.rounded#button(href="#page-top" style="background-color:#3F65D4;display:block;")
+            i.fas.fa-angle-up
+        //- .modal.fade#logoutModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+        //-     .modal-dialog(role="document")
+        //-         .modal-content
+        //-             di.modal-header
+        //-                 h5.modal-title(id="exampleModalLabel") Ready to Leave?
+        //-                 button.close(type="button" data-dismiss="modal" aria-label="Close")
+        //-                     span(aria-hidden="true") x
+        //-             .modal-body Select "Logout" below if you are ready to end your current session.
+        //-             .modal-footer
+        //-                 button.btn.btn-secondary(type="button" data-dismiss="modal") Cancel
+        //-                 a.btn.btn-primary(href="/logout") Logout
+        include ../includes/script

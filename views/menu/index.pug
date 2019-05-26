@@ -1,0 +1,43 @@
+extends ../layouts/main-layout.pug
+block styles
+    script(src="js/Chart.min.js")
+block content
+    .d-sm-flex.align-items-center.justify-content-between.mb-4
+        h1.h3.mb-0.text-gray-800#title
+            a.lang(href="/" key="dashboard") #{title}
+    hr
+    h3.h3.mb-0.text-gray-800.lang(key="charts") Charts
+    hr
+    .row
+        .col-sm-6
+            .card.shadow.mb-4
+                .card-header.py-3
+                    .h6.m-0.font-weight-bold.text-primary.lang(key="barChart") Bar Chart
+                .card-body
+                    canvas#bar-chart(width="800" height="450")
+        .col-sm-6
+            .card.shadow.mb-4
+                .card-header.py-3
+                    .h6.m-0.font-weight-bold.text-primary.lang(key="pieChart") Pie Chart
+                .card-body
+                    canvas#pie-chart(width="800" height="450")
+    if(users)
+        h3.h3.mb-0.text-gray-800.lang(key="users") Users
+        hr
+        .row
+            each user in users
+                .col-md-4
+                    .card.mb-3.mx-2.mb-4(style="max-width: 540px;")
+                        .row.no-gutters
+                            .col-md-4
+                                img.card-img.img-fluid(src=`img/${user.imgUrl}` alt="Profile Image" style="max-width:125px;max-height:125px;")
+                            .col-md-8
+                                .card-body
+                                    h5.card-title #{user.firstName} #{user.lastName}
+                                    p.card-text
+                                        small.text-muted #{user.email}
+block scripts
+    script(src='js/dashboard.js')
+    //- if(users)
+        each user in users
+            p #{user.firstName} #{user.lastName} 

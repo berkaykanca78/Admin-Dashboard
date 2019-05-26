@@ -1,0 +1,63 @@
+extends ../layouts/main-layout.pug
+block content
+    .d-sm-flex.align-items-center.justify-content-between.mb-4
+        h1.h3.mb-0.text-gray-800#title
+            a.lang(href="/profile" key="profileTitle") #{title}
+    hr
+    form(method="POST" action="profile" enctype="multipart/form-data")
+        .container-fluid
+            .row
+                .col-md-4
+                    .form-group.row
+                        .row
+                            .col-md-11
+                                .card.shadow.border-primary.text-center
+                                    .card-header.py-3
+                                        h6.m-0.font-weight-bold.lang(key="image") Image
+                                    .card-body.text-center
+                                        img.rounded-circle(src=`img/${imgUrl}` alt="Profile Image" style="width:150px;height:150px;")
+                                    .card-footer
+                                        input.form-control-file#image(type="file"  value="" name="image")
+                .col-md-8
+                    if errorMessage
+                        .alert.alert-danger.col-sm-12#error #{errorMessage}
+                    if successMessage
+                        .alert.alert-success.col-sm-12#success #{successMessage}
+                    h3.h3.mb-0.text-gray-800.lang(key="account") Account
+                    hr
+                    .form-group.row
+                        label.col-sm-3.col-form-label(for="emailProfile") 
+                            b.lang(key="email")  E-Mail: 
+                        .col-sm-9
+                            input.form-control.form-control-user#emailProfile(type="email" aria-describedby="emailHelp" value=`${email}` name="emailProfile" required)
+                    .form-group.row
+                        label.col-sm-3.col-form-label(for="firstNameProfile") 
+                            b.lang(key="firstName") First Name: 
+                        .col-sm-9
+                            input.form-control.form-control-user#firstNameProfile(type="text" value=`${firstName}` name="firstNameProfile" required)
+                    .form-group.row
+                        label.col-sm-3.col-form-label(for="lastNameProfile") 
+                            b.lang(key="lastName") Last Name: 
+                        .col-sm-9
+                            input.form-control.form-control-user#lastNameProfile(type="text" value=`${lastName}` name="lastNameProfile" required)
+                    .form-group.row
+                        label.col-sm-3.col-form-label(for="oldPasswordProfile") 
+                            b.lang(key="oldPass") Old Password: 
+                        .col-sm-9
+                            input.form-control.form-control-user#oldPasswordProfile(type="password" value='' name="oldPasswordProfile" required)
+                    .form-group.row
+                        label.col-sm-3.col-form-label(for="newPasswordProfile") 
+                            b.lang(key="newPass") New Password: 
+                        .col-sm-9
+                            input.form-control.form-control-user#newPasswordProfile(type="password" value='' name="newPasswordProfile" required)
+                    .form-group.row
+                        label.col-sm-3.col-form-label(for="newPasswordAgainProfile") 
+                            b.lang(key="newPassAgain") New Password Again: 
+                        .col-sm-9
+                            input.form-control.form-control-user#newPasswordAgainProfile(type="password" value='' name="newPasswordAgainProfile" required)
+                    hr
+                    .form-group.row
+                        button(type='submit' key="update").btn.btn-primary.btn-lg.btn-block.lang Update
+//- block scripts
+//-     script(src='/socket.io/socket.io.js')
+//-     script(src="js/socket.js")

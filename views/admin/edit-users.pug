@@ -1,0 +1,36 @@
+form(action="/edit-users" method="POST")
+        .modal.fade#editModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+            .modal-dialog.modal-dialog-vertical-center.modal-lg(role="document")
+                .modal-content
+                    .modal-header
+                        h5.modal-title#label Edit User
+                        button.close(type="button" data-dismiss="modal" aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        .form-group.row
+                            label.col-sm-3.col-form-label(for="inputName")
+                                b First Name:
+                            .col-sm-9
+                                input.form-control#inputName(type="text" placeholder="First Name" name="inputFirstName")
+                        .form-group.row
+                            label.col-sm-3.col-form-label(for="inputSurname") 
+                                b Last Name:
+                            .col-sm-9
+                                input.form-control#inputSurname(type="text" placeholder="Last Name" name="inputLastName")
+                        .form-group.row
+                            label.col-sm-3.col-form-label(for="inputRole") 
+                                b Role:
+                            .col-sm-9
+                                select.form-control#inputRole(name="inputRole")
+                                    each role in roles
+                                        option #{role}
+                        .form-group.row
+                            label.col-sm-3.col-form-label(for="inputEmail") 
+                                b Email Address:
+                            .col-sm-9
+                                input.form-control#inputEmail(type="email" placeholder="Email" name="inputEmail")
+                        .form-group-row
+                            input.form-control#inputId(type="hidden" placeholder="Id" name="inputId") 
+                    .modal-footer
+                        button.btn.btn-danger(type="button" data-dismiss="modal") Close  
+                        button.btn.btn-success(type="submit") Save Changes   

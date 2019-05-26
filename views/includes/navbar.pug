@@ -1,0 +1,71 @@
+nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+    button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+        i.fa.fa-bars
+    //- form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
+    //-     .input-group
+    //-         input.form-control.bg-light.border-0.small(type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2")
+    //-         .input-group-append
+    //-             button.btn.btn-primary(type="button")
+    //-                 i.fas.fa-search.fa-sm
+    form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search(action="/" method="GET")
+        .input-group.form-group
+            input.form-control.bg-light.border-0.small.lang(type="text" key="search" placeholder="Search users with write user's name or surname..." aria-label="Search" aria-describedby="basic-addon2" name="search")
+            .input-group-append
+                button.btn.btn-primary(type="submit")
+                    i.fas.fa-search.fa-sm
+    ul.navbar-nav.ml-auto
+        li.nav-item.dropdown.no-arrow.d-sm-none
+            a.nav-link.dropdown-toggle#searchDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                i.fas.fa-search.fa-fw
+            .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in(aria-labelledby="searchDropdown")
+                form.form-inline.mr-auto.w-100.navbar-search
+                    .input-group
+                        input.form-control.bg-light.border-0.small(type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2")
+                        .input-group-append
+                            button.btn.btn-primary(type="button")
+                                i.fas.fa-search.fa-sm
+        li.nav-item.dropdown.no-arrow.mx-1
+            a.nav-link.dropdown-toggle#languageDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                i.fas.fa-language.fa-fw
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="languageDropdown" style="width:10rem!important")
+                h6.dropdown-header.lang(key="languageCenter") Language Center
+                button.dropdown-item.translate#en.lang(key="english")
+                    img(src="img/english.png" width="16" height="16")
+                    |   English
+                button.dropdown-item.translate#tr.lang(key="turkish")
+                    img(src="img/turkish.png" width="16" height="16")
+                    |   Turkish
+        li.nav-item.dropdown.no-arrow.mx-1
+            a.nav-link.dropdown-toggle#messagesDropdown(href="/messages")
+                i.fas.fa-envelope.fa-fw
+        .topbar-divider.d-none.d-sm-block
+        //- li.nav-item.dropdown.no-arrow.mx-1
+        //-     a.nav-link.dropdown-toggle#alertsDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+        //-         i.fas.fa-bell.fa-fw
+        //-         span.badge.badge-primary.badge-counter 3+
+        //- li.nav-item.dropdown.no-arrow.mx-1
+        //-     a.nav-link.dropdown-toggle#messagesDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+        //-         i.fas.fa-envelope.fa-fw
+        //-         span.badge.badge-primary.badge-counter 7
+        //- .topbar-divider.d-none.d-sm-block
+        li.nav-item.dropdown.no-arrow
+            a.nav-link.dropdown-toggle#userDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                span.mr-2.d-none.d-lg-inline.text-gray-600.small#username
+                    b #{username}
+                img.img-profile.rounded-circle(src=`img/${imgUrl}`)
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="userDropdown" style="width:10rem!important")
+                h6.dropdown-header.lang(key="profileCenter") Profile Center
+                a.dropdown-item.lang(href="/profile" key="profile")
+                    i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                    | Profile
+                //- a.dropdown-item(href="#")
+                //-     i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400 
+                //-     |   Settings
+                a.dropdown-item.lang(href="/activity-logs" key="activity-logs")
+                    i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400 
+                    |   Activity Logs
+                .dropdown-divider
+                a.dropdown-item.lang(href="/logout" key="logout")
+                    i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400 
+                    |   Logout
+            

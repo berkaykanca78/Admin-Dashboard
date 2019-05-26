@@ -1,0 +1,24 @@
+form(action="/edit-authorizations" method="POST")
+        .modal.fade#editModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+            .modal-dialog.modal-dialog-vertical-center.modal-lg(role="document")
+                .modal-content
+                    .modal-header
+                        h5.modal-title#label Edit Role
+                        button.close(type="button" data-dismiss="modal" aria-label="Close" onclick="clearSpan()")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        .form-group.row
+                            label.col-sm-3.col-form-label(for="inputName")
+                                b Capabilties:
+                            .col-sm-9
+                                -var i=1;
+                                each capability in capabilities
+                                    span.badge.badge-secondary.pointer.capability(style="cursor:pointer;" onclick="clickSpan()" id=`select${i}`) #{capability}
+                                    | &nbsp;
+                                    -i++;
+                                input#List(type="hidden" name="List") 
+                        .form-group-row
+                            input.form-control#inputId(type="hidden" placeholder="Id" name="inputId")  
+                    .modal-footer
+                        button.btn.btn-danger(type="button" onclick="clearSpan()" data-dismiss="modal") Close  
+                        button.btn.btn-success(type="submit" onclick="clearSpan()") Save Changes

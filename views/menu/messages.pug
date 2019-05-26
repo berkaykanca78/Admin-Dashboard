@@ -1,0 +1,22 @@
+extends ../layouts/main-layout.pug
+block styles
+    link(rel="stylesheet" type="text/css" href="css/messages.css")
+block content
+    .d-sm-flex.align-items-center.justify-content-between.mb-4
+        h1.h3.mb-0.text-gray-800#title
+            a.lang(href="/messages" key="messages") #{title}
+    hr
+    .row
+        .col-md-12
+            #mario-chat
+                #chat-window
+                    #output
+                    #feedback
+                input#handle(type="text" placeholder="Handle" value=`${username}` readonly) 
+                input#message.lang(type="text" placeholder="Message" key="message")
+                button#send.lang(key="send") Send
+block scripts
+    script(src='/socket.io/socket.io.js')
+    script(src="js/chatSocket.js")
+
+      

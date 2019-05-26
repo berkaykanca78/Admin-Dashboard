@@ -1,0 +1,53 @@
+extends ../layouts/main-layout.pug
+block styles
+    link(rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css")
+block content
+    .d-sm-flex.align-items-center.justify-content-between.mb-4
+        h1.h3.mb-0.text-gray-800.lang#title(key="adminAuth") Admin / 
+            a(href="/authorizations") #{title}
+    hr
+    a.btn.btn-success.btn-sm.text-white(type="button" data-toggle="modal" data-target="#addModal") Add Role
+    .container.my-4
+        .row
+            .col-md-12
+                if (action !== 'undefined' && action === 'add')
+                    div.alert.alert-success Role has been added.
+                if (action !== 'undefined' && action === 'edit')
+                    div.alert.alert-warning Role has been updated.
+                if (action !== 'undefined' && action === 'delete')
+                    div.alert.alert-danger Role has been deleted.
+                -var j=0;
+                .table-responsive
+                    table.table.table-striped.table-bordered.table-inverse.table-hover#veriler
+                        thead.text-center
+                            tr
+                                th(scope="col") 
+                                    b|  #
+                                th(scope="col")
+                                    b|  Roles
+                                th(scope="col")
+                                    b|  Capabilities
+                                th(scope="col")
+                                    b|  Events
+                        tbody.text-center
+                            -var i=1;
+                            each role in roles
+                                tr
+                                    th(scope="row") #{i}
+                                        input(value=`${role._id}` type="hidden" name="inputId")
+                                    td 
+                                        span.badge-success #{role.roleName}
+                                    td
+                                        span.badge-info #{role.capabilities}
+                                    td
+                                        a.btn.btn-primary.btn-sm.text-white(type="button" data-toggle="modal" data-target="#editModal" data-id=`${role._id}`) Edit
+                                        |   &nbsp; 
+                                        a.btn.btn-danger.btn-sm.text-white(type="submit" href=`deleteRole/${role._id}`) Delete                                       
+                                    -i++;
+    include edit-authorizations 
+    include add-authorizations                            
+block scripts
+    script(type="text/javascript" src="js/jquery.dataTables.min.js")
+    script(type="text/javascript" src="js/dataTables.bootstrap4.min.js")
+    script(type="text/javascript" src="js/dataTables.min.js")
+    script(src="js/editAuth.js")
